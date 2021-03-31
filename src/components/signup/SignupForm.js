@@ -7,7 +7,7 @@ export const SignupForm = () => {
   const history = useHistory()
 
   // 'data' is an object where the keys are the names of the form fields, 
-  // and the values are the form input values
+  // and the values are the form input values.
   const onSubmit = handleSubmit((data) => {
     alert(JSON.stringify(data))
     // redirect to Homepage after successful signup
