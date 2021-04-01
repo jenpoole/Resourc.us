@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: [
-    'react-hot-loader/patch',
     './src/index.js'
   ],
   output: {
@@ -54,10 +53,7 @@ const config = {
     extensions: [
       '.js',
       '.jsx'
-    ],
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({

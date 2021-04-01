@@ -8,6 +8,7 @@ const teamRouter = require('./routes/team');
 const resourceRouter = require('./routes/resource');
 
 const PORT = 3000;
+// const PORT = 5000;
 
 // HANDLE ASSETS
 app.use(express.json());
