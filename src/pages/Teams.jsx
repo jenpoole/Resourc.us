@@ -76,38 +76,6 @@ function Teams() {
 
   return (
     <div className="wrapper">
-      {/* SIDE NAVBAR COMPONENT */}
-      <nav id="sidebar" className="sidebar">
-        <div className="sidebar-content js-simplebar">
-          <a className="sidebar-brand" href="/">
-            <span className="align-middle mr-3"><i className='bx bx-bolt-circle'></i> Resourcus</span>
-          </a>
-
-          <ul className="sidebar-nav">
-            <li className="sidebar-header">Home</li>
-            <li className="sidebar-header">Teams</li>
-            <li className="sidebar-header"><Link to='/'><i className='bx bx-home-heart' ></i> Home</Link></li>
-            <li className="sidebar-header"><Link to='/teams'><i className='bx bx-group' ></i> Teams</Link></li>
-
-            <li className="sidebar-item">
-              <a href="/teams" className="sidebar-link ">
-                <i className="align-middle" data-feather="sliders"></i> <span className="align-middle">View All Teams</span>
-              </a>
-            </li>
-
-            <li className="sidebar-item active">
-              <a href="#pages" data-toggle="collapse" className="sidebar-link">
-                <i className="align-middle" data-feather="layout"></i> <span className="align-middle">My Teams</span>
-              </a>
-              <ul id="pages" className="sidebar-dropdown list-unstyled collapse show" data-parent="#sidebar">
-                <li className="sidebar-item"><a className="sidebar-link" href="pages-profile.html">Team 1</a></li>
-                <li className="sidebar-item"><a className="sidebar-link" href="pages-settings.html">Team 2</a></li>
-                <li className="sidebar-item"><a className="sidebar-link" href="pages-clients.html">Team 3</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
 
     {/* MAIN LAYOUT COMPONENT */}
 		<div className="main">

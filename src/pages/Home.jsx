@@ -206,20 +206,22 @@ function HomePage() {
 					{/* <a href="#" className="btn btn-primary float-right mt-n1">Create a Team</a>
 					<h1 className="h3 mb-3">Teams</h1> */}
 
-          <h1>Welcome Back, {user.user.firstName}</h1>
+          <div>
+            <h1>Welcome Back, {user.user.firstName}</h1>
+          </div>
 
 					<div className="row">
-            {user.user.isLoggedIn && <h2>Your Teams:</h2>}
+            <div className="col-12">{user.user.isLoggedIn && <h2>Your Teams:</h2>}</div>
 
             {/* CARD COMPONENT (team) */}
             {user.user.isLoggedIn && teams.map(team =>
               <div key={team._id} className="col-12 col-md-6 col-lg-4">
                 <div className="card">
-                  <img className="card-img-top" src="img/photos/unsplash-1.jpg" alt="Unsplash" />
+                  <img className="card-img-top" src={team?.profilePic ?? "https://blogs.sas.com/content/sastraining/files/2015/03/black_background.png"} alt="Unsplash" />
                   <div className="card-header px-4 pt-4">
                     <h5 className="card-title mb-0">{team.name}</h5>
                     <div className="meta">
-                      <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0] : "General"}</div>
+                      <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0].name : "General"}</div>
                       <div><i className='bx bx-merge'></i>{team.resourcesCount}</div>
                       <div><i className='bx bxs-user-account'></i> {team.usersCount}</div>
                     </div>
@@ -229,7 +231,7 @@ function HomePage() {
                   </div>
                   <div className="card-body px-4 pt-2 actions">
                     <Link className="btn btn-info" to={"/teams/" + team._id}>View</Link>
-                    { user.user.teamsList.indexOf(team._id) !== -1 && <button type="button" onClick={() => leaveTeam(team)}>Leave Team</button>}
+                    { user.user.teamsList.indexOf(team._id) !== -1 && <button type="button" className="btn btn-sucess" onClick={() => leaveTeam(team)}>Leave Team</button>}
                     {/* { user.isLoggedIn && user.teamsList.indexOf(team._id) === -1 && <button type="button" onClick={() => joinTeam(team._id)}>Join</button>}
                     { user.isLoggedIn && user.teamsList.indexOf(team._id) !== -1 && <p>Joined</p> } */}
                   </div>
@@ -241,15 +243,15 @@ function HomePage() {
           {/* DISCOVER TEAMS COMPONENT */}
           {/* TO DO: UPDATE STYLING */}
           <div className="row">
-            {user.user.isLoggedIn && <h2>Discover:</h2>}
+          <div className="col-12">{user.user.isLoggedIn && <h2>Discover:</h2>}</div>
             {user.user.isLoggedIn && otherTeams.map(team => 
               <div key={team._id} className="col-12 col-md-6 col-lg-4">
                 <div className="card">
-                  <img className="card-img-top" src="img/photos/unsplash-1.jpg" alt="Unsplash" />
+                  <img className="card-img-top" src={team?.profilePic ?? "https://blogs.sas.com/content/sastraining/files/2015/03/black_background.png"} alt="Unsplash" />
                   <div className="card-header px-4 pt-4">
                     <h5 className="card-title mb-0">{team.name}</h5>
                     <div className="meta">
-                      <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0] : "General"}</div>
+                      <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0].name : "General"}</div>
                       <div><i className='bx bx-merge'></i>{team.resourcesCount}</div>
                       <div><i className='bx bxs-user-account'></i> {team.usersCount}</div>
                     </div>
@@ -258,9 +260,9 @@ function HomePage() {
                     <p>{team.description}</p>
                   </div>
                   <div className="card-body px-4 pt-2 actions">
-                    { user.user.teamsList.indexOf(team._id) === -1 && <button type="button" onClick={() => joinTeam(team)}>Join</button>}
+                    <Link className="btn btn-info" to={"/teams/" + team._id}>View</Link>
+                    { user.user.teamsList.indexOf(team._id) === -1 && <button className="btn btn-success btn-join" type="button" onClick={() => joinTeam(team)}>Join</button>}
                     { user.user.teamsList.indexOf(team._id) !== -1 && <p>Joined</p> }
-                    <Link className="btn btn-primary" to={"/teams/" + team._id}>View</Link>
                   </div>
                 </div>
               </div>
