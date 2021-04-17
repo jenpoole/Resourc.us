@@ -167,14 +167,14 @@ function Teams() {
 					<div className="row">
 
             {/* CARD COMPONENT (team) */}
-            {user.user.isLoggedIn && teams.map(team =>
+            {user.user.isLoggedIn && _teams.map(team =>
               <div key={team._id} className="col-12 col-md-6 col-lg-4">
                 <div className="card">
                   <img className="card-img-top" src={team?.profilePic ?? "https://blogs.sas.com/content/sastraining/files/2015/03/black_background.png"} alt="Unsplash" />
                   <div className="card-header px-4 pt-4">
                     <h5 className="card-title mb-0">{team.name}</h5>
                     <div className="meta">
-                      <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0].name : "General"}</div>
+                      <div className="badge badge-secondary my-2">{team?.categoriesList[0] ? team?.categoriesList[0]?.name : "General"}</div>
                       <div><i className='bx bx-merge'></i>{team.resourcesCount}</div>
                       <div><i className='bx bxs-user-account'></i> {team.usersCount}</div>
                     </div>

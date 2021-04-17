@@ -95,8 +95,7 @@ function TeamDetails({ match }) {
 			<main className="content">
 				<div className="container-fluid p-0">
           {/* <Link to="/CreateTeam" className="btn btn-success">Create Team</Link> */}
-					<a href="/CreateTeam" className="btn btn-primary float-right mt-n1">Create a Team</a>
-					<h1 className="h3 mb-3">Teams</h1>
+					<a href="/CreateResource" className="btn btn-primary float-right mt-n1">Create a Resource</a>
 
           <div className="searchContainer">
             {/* <SearchField
@@ -127,10 +126,11 @@ function TeamDetails({ match }) {
             <ResourceCard teamId={t._id}></ResourceCard>
 
             {/* CARD COMPONENT (resource) */}
+            <div className="row">
             {teamResources.map(resource => (
               <div key={resource._id} className="col-12 col-md-6 col-lg-4">
                 <div className="card">
-                  <img className="card-img-top" src={resource?.profilePic ?? "https://blogs.sas.com/content/sastraining/files/2015/03/black_background.png"} alt="Unsplash" />
+                  <img className="card-img-top" src={resource?.profilePic ?? "https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"} alt="Unsplash" />
                   <div className="card-header px-4 pt-4">
                     <h5 className="card-title mb-0">{resource.title}</h5>
                     <div className="meta">
@@ -142,6 +142,7 @@ function TeamDetails({ match }) {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         ))}
 
