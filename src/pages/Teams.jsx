@@ -4,9 +4,11 @@ import { Container, Row, Col } from 'reactstrap';
 import { CategoriesTagsSunBurst } from '../components/CategoriesTagsSunBurst';
 import { PopularResourcesBarChart } from '../components/PopularResourcesBarChart';
 import { useUserContext, useStateValue } from '../StateProvider';
+// import SearchField from 'react-search-field';
 
 function Teams() {
   const [_teams, setTeams] = useState([]);
+  const [_teamsCopy, setTeamsCopy] = useState([]);
   const { user , dispatch} = useUserContext();
 
   // get values from state
@@ -73,6 +75,15 @@ function Teams() {
     
 
   }
+
+  // const onSearch = async (value) => {
+  //   const searchedTeams = _teams.filter(team => team.name.toLowerCase().includes(value.toLowerCase()) || team.description.toLowerCase().includes(value.toLowerCase()))
+  //   setTeams(searchedTeams);
+  // }
+
+  // const onClearSearch = () => {
+  //   setTeams(_teamsCopy);
+  // }
 
   return (
     <div className="wrapper">
@@ -145,10 +156,42 @@ function Teams() {
             </Row>
           </Container>
 
+          <div className="searchContainer">
+            {/* <SearchField
+            placeholder="Search teams..."
+            onSearchClick={(value) => onSearch(value)}
+            /> */}
+            {/* <button type="button" onClick={onClearSearch} style="margin-left:15px">Clear Search</button> */}
+          </div>
+
 					<div className="row">
 
             {/* CARD COMPONENT (team) */}
-            {_teams.map(team =>
+            {user.user.isLoggedIn && teams.map(team =>
+              <div key={team._id} className="col-12 col-md-6 col-lg-4">
+                <div className="card">
+                  <img className="card-img-top" src={team?.profilePic ?? "https://blogs.sas.com/content/sastraining/files/2015/03/black_background.png"} alt="Unsplash" />
+                  <div className="card-header px-4 pt-4">
+                    <h5 className="card-title mb-0">{team.name}</h5>
+                    <div className="meta">
+                      <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0].name : "General"}</div>
+                      <div><i className='bx bx-merge'></i>{team.resourcesCount}</div>
+                      <div><i className='bx bxs-user-account'></i> {team.usersCount}</div>
+                    </div>
+                  </div>
+                  <div className="card-body px-4 pt-2">
+                    <p>{team.description}</p>
+                  </div>
+                  <div className="card-body px-4 pt-2 actions">
+                    <Link className="btn btn-info" to={"/teams/" + team._id}>View</Link>
+                    { user.user.teamsList.indexOf(team._id) !== -1 && <button type="button" className="btn btn-sucess" onClick={() => leaveTeam(team)}>Leave Team</button>}
+                    {/* { user.isLoggedIn && user.teamsList.indexOf(team._id) === -1 && <button type="button" onClick={() => joinTeam(team._id)}>Join</button>}
+                    { user.isLoggedIn && user.teamsList.indexOf(team._id) !== -1 && <p>Joined</p> } */}
+                  </div>
+                </div>
+              </div>
+            )}
+            {/* {_teams.map(team =>
             <div key={team._id} className="col-12 col-md-6 col-lg-4">
 							<div className="card">
 								<img className="card-img-top" src="img/photos/unsplash-1.jpg" alt="Unsplash" />
@@ -169,7 +212,7 @@ function Teams() {
                   { user.isLoggedIn && user.teamsList.indexOf(team._id) !== -1 && <p>Joined</p> }
                 </div>
 							</div>
-						</div>)}
+						</div>)} */}
 
           </div>
         </div>  

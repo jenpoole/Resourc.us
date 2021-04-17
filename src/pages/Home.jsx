@@ -149,6 +149,8 @@ function HomePage() {
       })
   }
 
+  // console.log("team", team);
+
   return (
     <div className="wrapper">
 
@@ -221,6 +223,7 @@ function HomePage() {
                   <div className="card-header px-4 pt-4">
                     <h5 className="card-title mb-0">{team.name}</h5>
                     <div className="meta">
+                      {/* {console.log("team.categoresList[0] --> ", team)} */}
                       <div className="badge badge-secondary my-2">{team.categoriesList[0] ? team.categoriesList[0].name : "General"}</div>
                       <div><i className='bx bx-merge'></i>{team.resourcesCount}</div>
                       <div><i className='bx bxs-user-account'></i> {team.usersCount}</div>
